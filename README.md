@@ -1,2 +1,2 @@
 # ScrumControlApp
-1. Spring de A - 9
+1. Sprint de A - 9
