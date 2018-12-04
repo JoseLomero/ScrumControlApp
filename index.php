@@ -16,7 +16,7 @@
         
         if ($_POST != null) {
             # Conexión a la bdd
-            $conn = mysqli_connect('localhost','jose','jose123');
+            $conn = mysqli_connect('localhost','boss','1234');
             mysqli_select_db($conn, 'ScrumControlBD');
 
             if(isset($_REQUEST['submit']))
