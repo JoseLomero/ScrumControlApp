@@ -8,14 +8,16 @@
   <body>
     <?php
     $user = $_POST['user'];
-    echo "<nav>";
-    echo "  <div class='nav-user'>";
-    echo "    <p class='usuario-user'>Bienvenido, ".$user."</p>";
-    echo "    <a href='index.php'>";
-    echo "      <button><img class='logout' src='img/logout.png'></button>";
-    echo "    </a>";
-    echo "  </div>";
-    echo "</nav>";
+    echo "
+    <nav>
+      <div class='nav-user'>
+        <p class='usuario-user'>Bienvenido, ".$user."</p>
+        <a href='index.php'>
+          <button><img class='logout' src='img/logout.png'></button>
+        </a>
+      </div>
+    </nav>
+    <button>Muestra un error!</button>";
     ?>
   </body>
 </html>
