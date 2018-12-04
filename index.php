@@ -7,7 +7,7 @@
     <body>
     <?php
         echo "<h3>LOG IN</h3>";
-        echo "<form action='proyectos' method='post'>";
+        echo "<form action='proyectos.php' method='post'>";
             echo "User name: <input type='text' name='user' value='' placeholder='username'><br>";
             echo "Password: <input type='password' name='password' value='' placeholder='password'><br>";
             echo "<input type='submit' name='submit'>";
