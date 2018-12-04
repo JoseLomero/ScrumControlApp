@@ -1,3 +1,4 @@
+<?php include('session.php'); ?>
 <html lang="es">
   <head>
     <meta charset="utf-8">
@@ -9,8 +10,8 @@
     <?php
     $user = $_POST['user'];
     echo "<nav>";
-    echo "  <p>".$user."</p>";
-    echo "  <a href='index.php'>";
+    echo "  <p>Welcome :".$login_session."</p>";
+    echo "  <a href='logout.php'>";
     echo "    <button><img class='logout' src='img/logout.png'></button>";
     echo "  </a>";
     echo "</nav>";
