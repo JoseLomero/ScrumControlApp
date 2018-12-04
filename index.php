@@ -18,9 +18,7 @@
             # Conexión a la bdd
             $conn = mysqli_connect('localhost','boss','1234');
             mysqli_select_db($conn, 'ScrumControlBD');
-
-            if(isset($_REQUEST['submit']))
-
+            
             $user = $_POST['user'];
             $password = $_POST['password'];
 
