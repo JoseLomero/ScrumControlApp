@@ -1,10 +1,10 @@
-<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8">
     <title>Proyectos</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
+
   <body>
     <?php
     $user = $_POST['user'];

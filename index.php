@@ -1,9 +1,34 @@
-<!DOCTYPE html>
+<?php
+include("config.php")
+session_start();
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+  $username = mysqli_real_escape_string($db,$_POST['user']);
+  $password = mysqli_real_escape_string($db,$_POST['password']);
+
+  $sql = "SELECT * FROM Usuarios WHERE Nom='".$user."' AND Pasword=SHA2('".$password."',512);";
+  $result = mysqli_query($db,$sql);
+  $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+  $active = $row['active'];
+  $count = mysqli_num_rows($result);
+
+  //Si el resultado concuerda en la base de datos solo puede devolber 1 row
+
+  if($count ==1){
+    session_regiester("myusername");
+    $_SESSION['login_user'] = $username;
+    header("location:proyectos.php");
+  }else{
+    $error = "Valores del login erroneos";
+  }
+
+}
+?>
 <html>
     <head>
         <title>Login</title>
         <meta charset="utf-8" />
     </head>
+
     <body>
     <?php
         echo "<h3>LOG IN</h3>";
@@ -28,10 +53,6 @@
                 $message  = 'Consulta invàlida: ' . mysqli_error($conn) . "\n";
                 $message .= 'Consulta realitzada: ' . $consulta;
                 die($message);
-            }
-
-            while( $registre = mysqli_fetch_assoc($resultat) ) {
-                echo "<p class='azul'> Hello ".$user."</p>";
             }
         }
     ?>
