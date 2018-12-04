@@ -5,7 +5,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $username = mysqli_real_escape_string($db,$_POST['user']);
   $password = mysqli_real_escape_string($db,$_POST['password']);
 
-  $sql = "SELECT * FROM Usuarios WHERE Nom='".$user."' AND Pasword=SHA2('".$password."',512);";
+  $sql = "SELECT * FROM Usuarios WHERE Nom='".$username."' AND Pasword=SHA2('".$password."',512);";
   $result = mysqli_query($db,$sql);
   $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
   $active = $row['active'];
@@ -14,13 +14,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   //Si el resultado concuerda en la base de datos solo puede devolber 1 row
 
   if($count ==1){
-    session_regiester("username");
-    $_SESSION['login_user'] = $username;
+   $_SESSION['login_user'] = $username;
     header("location:proyectos.php");
   }else{
     $error = "Valores del login erroneos";
   }
-
 }
 ?>
 <html>
@@ -32,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <body>
     <?php
         echo "<h3>LOG IN</h3>";
-        echo "<form action='proyectos.php' method='post'>";
+        echo "<form action='' method='post'>";
             echo "User name: <input type='text' name='user' value='' placeholder='username'><br>";
             echo "Password: <input type='password' name='password' value='' placeholder='password'><br>";
             echo "<input type='submit' name='submit'>";

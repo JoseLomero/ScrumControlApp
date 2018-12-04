@@ -8,11 +8,11 @@
 
   <body>
     <?php
-    $user = $_POST['user'];
+
     echo "<nav>";
     echo "  <div class='nav-user'>";
-    echo "    <p class='usuario-user'>Bienvenido, ".$user."</p>";
-    echo "    <a href='index.php'>";
+    echo "    <p class='usuario-user'>Bienvenido, ".$login_session."</p>";
+    echo "    <a href='logout.php'>";
     echo "      <button><img class='logout' src='img/logout.png'></button>";
     echo "    </a>";
     echo "  </div>";
