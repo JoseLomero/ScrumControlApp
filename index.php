@@ -1,5 +1,5 @@
 <?php
-include("config.php")
+include("config.php");
 session_start();
 if($_SERVER["REQUEST_METHOD"] == "POST"){
   $username = mysqli_real_escape_string($db,$_POST['user']);
@@ -14,7 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   //Si el resultado concuerda en la base de datos solo puede devolber 1 row
 
   if($count ==1){
-    session_regiester("myusername");
+    session_regiester("username");
     $_SESSION['login_user'] = $username;
     header("location:proyectos.php");
   }else{
@@ -37,11 +37,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             echo "Password: <input type='password' name='password' value='' placeholder='password'><br>";
             echo "<input type='submit' name='submit'>";
         echo "</form>";
-        if ($_POST != null) {
+        /*if ($_POST != null) {
             # Conexión a la bdd
             $conn = mysqli_connect('localhost','boss','1234');
             mysqli_select_db($conn, 'ScrumControlBD');
-            
+
             $user = $_POST['user'];
             $password = $_POST['password'];
 
@@ -54,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $message .= 'Consulta realitzada: ' . $consulta;
                 die($message);
             }
-        }
+        }*/
     ?>
     </body>
 </html>
