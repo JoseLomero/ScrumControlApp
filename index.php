@@ -13,10 +13,10 @@
             echo "<input type='submit' name='submit'>";
         echo "</form>";
 
-        
+
         if ($_POST != null) {
             # Conexión a la bdd
-            $conn = mysqli_connect('localhost','jose','jose123');
+            $conn = mysqli_connect('localhost','boss','1234');
             mysqli_select_db($conn, 'ScrumControlBD');
 
             if(isset($_REQUEST['submit']))
@@ -26,7 +26,7 @@
 
             $consulta = "SELECT * FROM Usuarios WHERE Nom='".$user."' AND Pasword=SHA2('".$password."',512);";
             echo "$consulta<br>";
-            
+
             $resultat = mysqli_query($conn, $consulta);
             if (!$resultat) {
                 $message  = 'Consulta invàlida: ' . mysqli_error($conn) . "\n";
@@ -35,7 +35,7 @@
             }
 
             while( $registre = mysqli_fetch_assoc($resultat) ) {
-                echo "<p class='azul'> Hello ".$registre['user']."</p>";
+                echo "<p class='azul'> Hello ".$user."</p>";
             }
         }
     ?>
