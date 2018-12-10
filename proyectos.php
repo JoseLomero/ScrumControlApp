@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Proyectos</title>
     <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/script.js"></script>
   </head>
 
   <body>
@@ -23,7 +24,8 @@
       <div class='errores-mensaje'><p>Error!</p></div>
     </div>
 
-    <button>Crea errores!</button>";
+    <button onclick='saltaError()'>Crea errores!</button>
+    <button onclick='quitaError()'>Resuelve errores!</button>";
     ?>
   </body>
 </html>

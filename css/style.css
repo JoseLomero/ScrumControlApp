@@ -23,6 +23,7 @@ nav {
 }
 
 #errores {
+  visibility: hidden;
   border: solid;
   float: left;
   border-radius: 25%;
