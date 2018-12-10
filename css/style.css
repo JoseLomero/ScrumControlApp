@@ -4,21 +4,20 @@
 }
 
 .usuario-user {
-    display: inline-block;
+  /*  display: inline-block;*/
+  float: right;
 }
-
+.app-Name{
+  float: left;
+}
 nav {
     margin-top: -12px;
     margin-left: -12px;
-    margin-right: -12px; 
+    margin-right: -12px;
     margin-bottom: 5px;
     padding: 1%;
     overflow: auto;
     border: solid;
     width: 100%;
     background-color: #eaeaea;
-}
-
-.nav-user {
-    float: right;
 }
