@@ -26,12 +26,23 @@ nav {
   border: solid;
   float: left;
   border-radius: 25%;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding: 1em;
   background-color: #fcff47;
   text-align: center;
+  position: absolute;
+  bottom: 10;
 }
 
 .basicError-icon {
   height: 32px;
+}
+
+.errores-icono {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }

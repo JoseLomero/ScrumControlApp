@@ -34,6 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <head>
         <title>Login</title>
         <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/style.css">
     </head>
 
     <body>
@@ -46,7 +47,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "</form>";
 
         if($error!=Null){
-          echo "<div>$error</div>";
+          echo "<div id='errores'>
+            <div class='errores-icono'><img src='img/exclamation.png' class='basicError-icon'></div>
+            <div class='errores-mensaje'>$error</div>
+          </div>";
         }
     ?>
     </body>
