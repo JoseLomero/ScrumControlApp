@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Temps de generació: 03-12-2018 a les 19:39:27
+-- Temps de generació: 10-12-2018 a les 20:31:32
 -- Versió del servidor: 5.7.24-0ubuntu0.18.04.1
 -- Versió de PHP: 7.2.10-0ubuntu0.18.04.1
 
@@ -50,6 +50,13 @@ CREATE TABLE `Grupos` (
   `ID_Proyecto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Bolcant dades de la taula `Grupos`
+--
+
+INSERT INTO `Grupos` (`ID`, `Nombre_Grupo`, `ID_Proyecto`) VALUES
+(1, 'JoNi', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -59,10 +66,18 @@ CREATE TABLE `Grupos` (
 CREATE TABLE `Proyectos` (
   `ID` int(11) NOT NULL,
   `Nombre_Proyecto` varchar(50) NOT NULL,
-  `Numero_Sprint` int(11) NOT NULL,
+  `Descripcion` varchar(200) NOT NULL,
+  `Numero_Sprint` int(11) DEFAULT NULL,
   `ID_Scrum_Master` int(11) NOT NULL,
   `ID_Product_Owner` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Bolcant dades de la taula `Proyectos`
+--
+
+INSERT INTO `Proyectos` (`ID`, `Nombre_Proyecto`, `Descripcion`, `Numero_Sprint`, `ID_Scrum_Master`, `ID_Product_Owner`) VALUES
+(1, 'Scrum Administrator', 'Aplicacion para gestionar proyectos en scrum', 1, 3, 4);
 
 -- --------------------------------------------------------
 
@@ -74,10 +89,19 @@ CREATE TABLE `Sprint` (
   `ID` int(11) NOT NULL,
   `ID_Proyecto` int(11) NOT NULL,
   `Numero_Sprint` int(11) NOT NULL,
-  `Horas_Maximas` int(11) NOT NULL,
+  `Fecha_Inicio` date NOT NULL,
   `Fecha_entrega` date NOT NULL,
+  `Horas_Maximas` int(11) NOT NULL,
   `Estado` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Bolcant dades de la taula `Sprint`
+--
+
+INSERT INTO `Sprint` (`ID`, `ID_Proyecto`, `Numero_Sprint`, `Fecha_Inicio`, `Fecha_entrega`, `Horas_Maximas`, `Estado`) VALUES
+(1, 1, 1, '2018-12-03', '2018-12-11', 20, 'Actual'),
+(2, 1, 2, '2018-12-12', '2018-12-18', 20, 'Proximamante');
 
 -- --------------------------------------------------------
 
@@ -98,10 +122,10 @@ CREATE TABLE `Usuarios` (
 --
 
 INSERT INTO `Usuarios` (`ID`, `Nom`, `Pasword`, `Permisos`, `ID_Grupo`) VALUES
-(1, 'Jose', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 0, NULL),
-(2, 'nil', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 0, NULL),
-(3, 'leandro', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 2, NULL),
-(4, 'enric', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 1, NULL);
+(1, 'Jose', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 0, 1),
+(2, 'Nil', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 0, 1),
+(3, 'Leandro', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 2, NULL),
+(4, 'Enric', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 1, NULL);
 
 --
 -- Indexos per taules bolcades
