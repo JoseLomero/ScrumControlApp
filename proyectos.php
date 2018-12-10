@@ -1,4 +1,4 @@
-<?php include('session.php'); ?>
+<?php include('session.php');?>
 <html lang="es">
   <head>
     <meta charset="utf-8">
@@ -8,6 +8,10 @@
 
   <body>
     <?php
+    //proyectos:
+    $sql = "SELECT Nombre_Proyecto, Descripcion FROM Proyectos;";
+    mysqli_select_db($db,'ScrumControlBD');
+    $resultat = mysqli_query($db,$sql);
 
     echo "<nav>
       <div class='nav-user'>
@@ -18,12 +22,17 @@
         </a></div>
       </div>
     </nav>
+    <button>Crea errores!</button>
     <div id='errores'>
       <div class='errores-icono'><img src='img/exclamation.png' class='basicError-icon'></div>
-      <div class='errores-mensaje'><p>Error!</p></div>
-    </div>
-
-    <button>Crea errores!</button>";
+      <div class='errores-mensaje'>Error!</div>
+    </div>";
+    echo "<div>";
+    while ($registre = mysqli_fetch_assoc($resultat)) {
+      echo "<div><h2>".$registre['Nombre_Proyecto']."</h2></div>";
+      echo "<div><h4>".$registre['Descripcion']."</h4></div>";
+    }
+    echo "</div>";
     ?>
   </body>
 </html>
