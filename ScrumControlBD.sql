@@ -114,15 +114,17 @@ CREATE TABLE `Usuarios` (
   `Nom` varchar(50) NOT NULL,
   `Pasword` varchar(512) NOT NULL,
   `Permisos` int(11) NOT NULL,
-  `ID_Grupo` int(11) DEFAULT NULL
+  `ID_Grupo` int(11) DEFAULT NULL,
+  `Email` varchar(100)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Bolcant dades de la taula `Usuarios`
 --
 
-INSERT INTO `Usuarios` (`ID`, `Nom`, `Pasword`, `Permisos`, `ID_Grupo`) VALUES
-(1, 'Jose', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 0, 1),
+INSERT INTO `Usuarios` (`ID`, `Nom`, `Pasword`, `Permisos`, `ID_Grupo`, `Email
+`) VALUES
+(1, 'Jose', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 0, 1, 'joselomero0@gmail.com'),
 (2, 'Nil', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 0, 1),
 (3, 'Leandro', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 2, NULL),
 (4, 'Enric', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 1, NULL);
