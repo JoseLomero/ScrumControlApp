@@ -23,7 +23,6 @@
         </a></div>
       </div>
     </nav>
-    <button>Crea errores!</button>
     <div id='errores'>
       <div class='errores-icono'><img src='img/exclamation.png' class='basicError-icon'></div>
       <div class='errores-mensaje'><p>Error!</p></div>
