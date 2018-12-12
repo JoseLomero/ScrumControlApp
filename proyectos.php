@@ -10,6 +10,7 @@
   <body>
     <?php
     //proyectos:
+    //hola
     $sql = "SELECT Nombre_Proyecto, Descripcion FROM Proyectos;";
     mysqli_select_db($db,'ScrumControlBD');
     $resultat = mysqli_query($db,$sql);
