@@ -14,6 +14,18 @@
     mysqli_select_db($db,'ScrumControlBD');
     $resultat = mysqli_query($db,$sql);
 
+    
+    function userData($user, $registre) {
+      $consulta_datos = "SELECT Usuarios.Permisos FROM Usuarios WHERE Usuarios.Nom = '$user';";
+      echo $consulta_datos;
+      while ($registre = mysqli_fetch_assoc($resultado)) {
+        echo $resultado;
+        "<script> var permisosUsuario = ".$resultado."</script>";
+        "<div class='".$resultado."'></div>";
+      }
+    }
+    userData($login_session, $registre);
+    
     echo "<nav>
       <div class='nav-user'>
         <div class='app-Name' ><p>Scrum Control App</p></div>
@@ -26,15 +38,13 @@
     <div id='errores'>
       <div class='errores-icono'><img src='img/exclamation.png' class='basicError-icon'></div>
       <div class='errores-mensaje'><p>Error!</p></div>
-    </div>
-    <button onclick='saltaError()'>Crea errores!</button>
-    <button onclick='quitaError()'>Resuelve errores!</button>";
-    echo "<div>";
+    </div>\n";
+    echo "    <div>\n";
     while ($registre = mysqli_fetch_assoc($resultat)) {
-      echo "<div><h2>".$registre['Nombre_Proyecto']."</h2></div>";
-      echo "<div><h4>".$registre['Descripcion']."</h4></div>";
+      echo "      <div><a href='#'><h2>".$registre['Nombre_Proyecto']."</h2></div>\n";
+      echo "      <div><h4>".$registre['Descripcion']."</h4></div>\n";
     }
-    echo "</div>";
+    echo "    </div>\n";
     ?>
   </body>
 </html>
