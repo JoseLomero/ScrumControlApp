@@ -1,8 +1,3 @@
-- Listado de participantes x sprint
-- archivo SQL
-- users + pass 
-
-
 # ScrumControlApp
 
 ## Tabla de contenidos
