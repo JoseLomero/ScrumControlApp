@@ -14,10 +14,8 @@
     $sql = "SELECT Nombre_Proyecto, Descripcion FROM Proyectos;";
     mysqli_select_db($db,'ScrumControlBD');
     $resultat = mysqli_query($db,$sql);
-/*
+
     
-<<<<<<< HEAD
-=======
     function userData($user, $registre) {
       $consulta_datos = "SELECT Usuarios.Permisos, Usuarios.ID_Grupo FROM Usuarios WHERE Usuarios.Nom = '$user';";
       $resultado = mysqli_query($registre, $consulta_datos);
@@ -31,7 +29,6 @@
     }
     userData($login_session, $db);
     
->>>>>>> 24b2a8fbadf613db0a678c2993303d6035746a1e
     echo "<nav>
       <div class='nav-user'>
         <div class='app-Name' ><p>Scrum Control App</p></div>
@@ -41,17 +38,6 @@
         </a></div>
       </div>
     </nav>";
-<<<<<<< HEAD
-    echo "<div class='proyect-list'>
-      <div class='proyect-title'>Proyectos</div>
-        <div class='proyect-table'>
-           <ul>";
-            while ($registre = mysqli_fetch_assoc($resultat)) {
-              echo "<li><a href='#' name='proyecto'>".$registre['Nombre_Proyecto']." (".$registre['Descripcion'].")</a></li>";
-            }
-           echo "</ul>";
-     echo "</div>";
-=======
     echo "<div class='Project-list'>
       <div class='Project-title'>Proyectos</div>
       <div class='Project-table'>
@@ -61,7 +47,6 @@
     }
       echo "</ul>";
     echo "</div>";
->>>>>>> 24b2a8fbadf613db0a678c2993303d6035746a1e
     echo "</div>";
     ?>
     
@@ -71,7 +56,6 @@
   
 
   </body>
-<<<<<<< HEAD
 </html>
 
 
@@ -87,7 +71,3 @@ CONSULTA PROJECTES SCRUM MASTER:
 CONSULTA PROJECTES PRODUCT OWNER:
 
   select Nombre_Proyecto from Proyectos where ID_Product_Owner = (select ID from Usuarios where Permisos = 1);
-=======
-</html>
->>>>>>> 24b2a8fbadf613db0a678c2993303d6035746a1e
-*/
