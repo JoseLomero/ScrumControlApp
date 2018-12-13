@@ -42,7 +42,7 @@ nav {
   animation: blinker 1s linear infinite;
 }
 
-.proyect-list{
+.project-list{
   width: 80%;
   margin: auto;
   border: 1px solid black;
@@ -50,7 +50,7 @@ nav {
   background-color: white;
 }
 
-.proyect-title{
+.project-title{
   width: auto;
   height: auto;
   text-align: center;
@@ -62,12 +62,12 @@ nav {
   padding: 10px;
 }
 
-.proyect-table{
+.project-table{
   width: 80%;
   margin: 20px;
   font-size: 20px;
 }
-.proyect-table li{
+.project-table li{
   list-style-type:none;
   text-align: center;
   border: 1px solid black;
@@ -76,13 +76,13 @@ nav {
   padding: 5px;
 }
 
-.proyect-table li a:hover{
+.project-table li a:hover{
   color: purple;
   text-decoration: underline;
 }
 
 
-.proyect-table li:hover{
+.project-table li:hover{
   background-color: pink;
 }
 

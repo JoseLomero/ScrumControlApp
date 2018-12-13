@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Proyectos</title>
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/script.js" defer></script>
   </head>
 
   <body>
@@ -14,8 +14,24 @@
     $sql = "SELECT Nombre_Proyecto, Descripcion FROM Proyectos;";
     mysqli_select_db($db,'ScrumControlBD');
     $resultat = mysqli_query($db,$sql);
-
+/*
     
+<<<<<<< HEAD
+=======
+    function userData($user, $registre) {
+      $consulta_datos = "SELECT Usuarios.Permisos, Usuarios.ID_Grupo FROM Usuarios WHERE Usuarios.Nom = '$user';";
+      $resultado = mysqli_query($registre, $consulta_datos);
+      global $permisos, $grupo;
+      while ($registre = mysqli_fetch_assoc($resultado)) {
+        $permisos = $registre['Permisos'];
+        $grupo = $registre['ID_Grupo'];
+        echo "<script>var tipoUsuario = ".$permisos."</script>";
+        //echo "<div id='usuario-user' class='".$permisos." ".$grupo."'></div>";
+      }
+    }
+    userData($login_session, $db);
+    
+>>>>>>> 24b2a8fbadf613db0a678c2993303d6035746a1e
     echo "<nav>
       <div class='nav-user'>
         <div class='app-Name' ><p>Scrum Control App</p></div>
@@ -25,6 +41,7 @@
         </a></div>
       </div>
     </nav>";
+<<<<<<< HEAD
     echo "<div class='proyect-list'>
       <div class='proyect-title'>Proyectos</div>
         <div class='proyect-table'>
@@ -34,6 +51,17 @@
             }
            echo "</ul>";
      echo "</div>";
+=======
+    echo "<div class='Project-list'>
+      <div class='Project-title'>Proyectos</div>
+      <div class='Project-table'>
+        <ul>";
+    while ($registre = mysqli_fetch_assoc($resultat)) {
+      echo "<li><a href='#' name='Proyecto'>".$registre['Nombre_Proyecto']." (".$registre['Descripcion'].")</a></li>";
+    }
+      echo "</ul>";
+    echo "</div>";
+>>>>>>> 24b2a8fbadf613db0a678c2993303d6035746a1e
     echo "</div>";
     ?>
     
@@ -43,6 +71,7 @@
   
 
   </body>
+<<<<<<< HEAD
 </html>
 
 
@@ -58,3 +87,7 @@ CONSULTA PROJECTES SCRUM MASTER:
 CONSULTA PROJECTES PRODUCT OWNER:
 
   select Nombre_Proyecto from Proyectos where ID_Product_Owner = (select ID from Usuarios where Permisos = 1);
+=======
+</html>
+>>>>>>> 24b2a8fbadf613db0a678c2993303d6035746a1e
+*/
