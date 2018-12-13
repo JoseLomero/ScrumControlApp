@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Temps de generació: 10-12-2018 a les 20:31:32
--- Versió del servidor: 5.7.24-0ubuntu0.18.04.1
--- Versió de PHP: 7.2.10-0ubuntu0.18.04.1
+-- Tiempo de generación: 13-12-2018 a las 17:07:31
+-- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
+-- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de dades: `ScrumControlBD`
+-- Base de datos: `ScrumControlBD`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `Especificaciones`
+-- Estructura de tabla para la tabla `Especificaciones`
 --
 
 CREATE TABLE `Especificaciones` (
@@ -41,7 +41,7 @@ CREATE TABLE `Especificaciones` (
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `Grupos`
+-- Estructura de tabla para la tabla `Grupos`
 --
 
 CREATE TABLE `Grupos` (
@@ -51,16 +51,17 @@ CREATE TABLE `Grupos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Bolcant dades de la taula `Grupos`
+-- Volcado de datos para la tabla `Grupos`
 --
 
 INSERT INTO `Grupos` (`ID`, `Nombre_Grupo`, `ID_Proyecto`) VALUES
-(1, 'JoNi', 1);
+(1, 'JoNi', 1),
+(2, 'JoJo', 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `Proyectos`
+-- Estructura de tabla para la tabla `Proyectos`
 --
 
 CREATE TABLE `Proyectos` (
@@ -73,16 +74,17 @@ CREATE TABLE `Proyectos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Bolcant dades de la taula `Proyectos`
+-- Volcado de datos para la tabla `Proyectos`
 --
 
 INSERT INTO `Proyectos` (`ID`, `Nombre_Proyecto`, `Descripcion`, `Numero_Sprint`, `ID_Scrum_Master`, `ID_Product_Owner`) VALUES
-(1, 'Scrum Administrator', 'Aplicacion para gestionar proyectos en scrum', 1, 3, 4);
+(1, 'Scrum Administrator', 'Aplicacion para gestionar proyectos en scrum', 1, 3, 4),
+(2, 'Git', 'Pruebas', 1, 1, 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `Sprint`
+-- Estructura de tabla para la tabla `Sprint`
 --
 
 CREATE TABLE `Sprint` (
@@ -96,7 +98,7 @@ CREATE TABLE `Sprint` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Bolcant dades de la taula `Sprint`
+-- Volcado de datos para la tabla `Sprint`
 --
 
 INSERT INTO `Sprint` (`ID`, `ID_Proyecto`, `Numero_Sprint`, `Fecha_Inicio`, `Fecha_entrega`, `Horas_Maximas`, `Estado`) VALUES
@@ -106,7 +108,7 @@ INSERT INTO `Sprint` (`ID`, `ID_Proyecto`, `Numero_Sprint`, `Fecha_Inicio`, `Fec
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `Usuarios`
+-- Estructura de tabla para la tabla `Usuarios`
 --
 
 CREATE TABLE `Usuarios` (
@@ -115,40 +117,40 @@ CREATE TABLE `Usuarios` (
   `Pasword` varchar(512) NOT NULL,
   `Permisos` int(11) NOT NULL,
   `ID_Grupo` int(11) DEFAULT NULL,
-  `Email` varchar(100)
+  `Email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Bolcant dades de la taula `Usuarios`
+-- Volcado de datos para la tabla `Usuarios`
 --
 
-INSERT INTO `Usuarios` (`ID`, `Nom`, `Pasword`, `Permisos`, `ID_Grupo`, `Email
-`) VALUES
+INSERT INTO `Usuarios` (`ID`, `Nom`, `Pasword`, `Permisos`, `ID_Grupo`, `Email`) VALUES
 (1, 'Jose', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 0, 1, 'joselomero0@gmail.com'),
-(2, 'Nil', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 0, 1),
-(3, 'Leandro', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 2, NULL),
-(4, 'Enric', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 1, NULL);
+(2, 'Nil', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 0, 1, 'nil@developer.mail'),
+(3, 'Leandro', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 2, NULL, 'leandro@scrum.master'),
+(4, 'Enric', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 1, NULL, 'enric@product.owner'),
+(5, 'Pop', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 0, 2, 'pepsort7@gmail.com');
 
 --
--- Indexos per taules bolcades
+-- Índices para tablas volcadas
 --
 
 --
--- Index de la taula `Especificaciones`
+-- Indices de la tabla `Especificaciones`
 --
 ALTER TABLE `Especificaciones`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `FK_Dev_ID` (`ID_Dev_Asignado`);
 
 --
--- Index de la taula `Grupos`
+-- Indices de la tabla `Grupos`
 --
 ALTER TABLE `Grupos`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `FK_Proyecto_ID` (`ID_Proyecto`);
 
 --
--- Index de la taula `Proyectos`
+-- Indices de la tabla `Proyectos`
 --
 ALTER TABLE `Proyectos`
   ADD PRIMARY KEY (`ID`),
@@ -157,13 +159,13 @@ ALTER TABLE `Proyectos`
   ADD KEY `FK_Numero_Sprint_ID` (`Numero_Sprint`);
 
 --
--- Index de la taula `Sprint`
+-- Indices de la tabla `Sprint`
 --
 ALTER TABLE `Sprint`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Index de la taula `Usuarios`
+-- Indices de la tabla `Usuarios`
 --
 ALTER TABLE `Usuarios`
   ADD PRIMARY KEY (`ID`),
@@ -171,23 +173,23 @@ ALTER TABLE `Usuarios`
   ADD KEY `FK_Grupo_ID` (`ID_Grupo`);
 
 --
--- Restriccions per taules bolcades
+-- Restricciones para tablas volcadas
 --
 
 --
--- Restriccions per la taula `Especificaciones`
+-- Filtros para la tabla `Especificaciones`
 --
 ALTER TABLE `Especificaciones`
   ADD CONSTRAINT `FK_Dev_ID` FOREIGN KEY (`ID_Dev_Asignado`) REFERENCES `Usuarios` (`ID`);
 
 --
--- Restriccions per la taula `Grupos`
+-- Filtros para la tabla `Grupos`
 --
 ALTER TABLE `Grupos`
   ADD CONSTRAINT `FK_Proyecto_ID` FOREIGN KEY (`ID_Proyecto`) REFERENCES `Proyectos` (`ID`);
 
 --
--- Restriccions per la taula `Proyectos`
+-- Filtros para la tabla `Proyectos`
 --
 ALTER TABLE `Proyectos`
   ADD CONSTRAINT `FK_Numero_Sprint_ID` FOREIGN KEY (`Numero_Sprint`) REFERENCES `Sprint` (`ID`),
@@ -195,7 +197,7 @@ ALTER TABLE `Proyectos`
   ADD CONSTRAINT `FK_Scrum_Master_ID` FOREIGN KEY (`ID_Scrum_Master`) REFERENCES `Usuarios` (`ID`);
 
 --
--- Restriccions per la taula `Usuarios`
+-- Filtros para la tabla `Usuarios`
 --
 ALTER TABLE `Usuarios`
   ADD CONSTRAINT `FK_Grupo_ID` FOREIGN KEY (`ID_Grupo`) REFERENCES `Grupos` (`ID`);
