@@ -42,6 +42,50 @@ nav {
   animation: blinker 1s linear infinite;
 }
 
+.proyect-list{
+  width: 80%;
+  margin: auto;
+  border: 1px solid black;
+  margin-top: 5%;
+  background-color: white;
+}
+
+.proyect-title{
+  width: auto;
+  height: auto;
+  text-align: center;
+  border-style: solid;
+    border-color: black;
+    border-width: 0px 0px 1px 1px;
+  float: right;
+  font-size: 25px;
+  padding: 10px;
+}
+
+.proyect-table{
+  width: 80%;
+  margin: 20px;
+  font-size: 20px;
+}
+.proyect-table li{
+  list-style-type:none;
+  text-align: center;
+  border: 1px solid black;
+  margin: 5px;
+  border-radius: 6px;
+  padding: 5px;
+}
+
+.proyect-table li a:hover{
+  color: purple;
+  text-decoration: underline;
+}
+
+
+.proyect-table li:hover{
+  background-color: pink;
+}
+
 @keyframes blinker {
   50% {
     opacity: 0;
