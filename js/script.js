@@ -1,32 +1,33 @@
+newProject(tipoUsuario);
 
-newProyect(tipoUsuario);
-
-
-
-function newProyect(user){
+/**
+ * 
+ * @param {number} user Esto dice el permiso que tiene el usuario logeado 
+ */
+function newProject(user){
 	if(user == 2){
-		var parent = document.querySelector(".proyect-table");
-		addElement(parent,"button","Add Proyect",["onclick=showForm();","name=addProyect"])
+		var parent = document.querySelector(".Project-table");
+		addElement(parent,"button","Add Project",["onclick=showForm();","name=addProject"])
 	}
 }
 
 /*     ------------------------------------------   */
 
 function showForm(){
-	document.querySelector("[name='addProyect']").disabled = true;
-	document.querySelector(".new-proyect-box").style.display = "block";
-	var parent = document.querySelector(".new-proyect-box");
-	var form = addElement(parent,"form",undefined,["action=insert.php","method=post","id=createProyect"]);
+	document.querySelector("[name='addProject']").disabled = true;
+	document.querySelector(".new-Project-box").style.display = "block";
+	var parent = document.querySelector(".new-Project-box");
+	var form = addElement(parent,"form",undefined,["action=insert.php","method=post","id=createProject"]);
 	var div = addElement(form,"div",undefined,["class=card-content container"]);
-	addElement(div,"span","Añadir nuevo proyecto",["class=card-title"]);
+	addElement(div,"span","Añadir nuevo Proyecto",["class=card-title"]);
 	var divrow = addElement(div,"div",undefined,["class=row"]);
 	
-	createText(divrow,"Nombre del proyecto: ","ProyectName");
-	createText(divrow,"Descripción del proyecto: ","descripcion");
+	createText(divrow,"Nombre del Proyecto: ","Name");
+	createText(divrow,"Descripción del Proyecto: ","descripcion");
 
-	createSelect(divrow,"Scrum Master del proyecto: ","scrumMaster");
-	createSelect(divrow,"Product Owner del proyecto: ","productOwner");
-	createGroup(divrow,"Grupos del proyecto: ","grupos");
+	createSelect(divrow,"Scrum Master del Proyecto: ","scrumMaster");
+	createSelect(divrow,"Product Owner del Proyecto: ","productOwner");
+	createGroup(divrow,"Grupos del Proyecto: ","grupos");
 
 	addElement(form,"div","Crear",["class=button","onclick=checkNulls()"]);
 }

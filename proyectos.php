@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Proyectos</title>
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/script.js" defer></script>
   </head>
 
   <body>
@@ -13,18 +13,20 @@
     mysqli_select_db($db,'ScrumControlBD');
     $resultat = mysqli_query($db,$sql);
 
-    /*
+    
     function userData($user, $registre) {
-      $consulta_datos = "SELECT Usuarios.Permisos FROM Usuarios WHERE Usuarios.Nom = '$user';";
-      echo $consulta_datos;
+      $consulta_datos = "SELECT Usuarios.Permisos, Usuarios.ID_Grupo FROM Usuarios WHERE Usuarios.Nom = '$user';";
+      $resultado = mysqli_query($registre, $consulta_datos);
+      global $permisos, $grupo;
       while ($registre = mysqli_fetch_assoc($resultado)) {
-        echo $resultado;
-        "<script> var permisosUsuario = ".$resultado."</script>";
-        "<div class='".$resultado."'></div>";
+        $permisos = $registre['Permisos'];
+        $grupo = $registre['ID_Grupo'];
+        echo "<script>var tipoUsuario = ".$permisos."</script>";
+        //echo "<div id='usuario-user' class='".$permisos." ".$grupo."'></div>";
       }
     }
-    userData($login_session, $registre);
-    */
+    userData($login_session, $db);
+    
     echo "<nav>
       <div class='nav-user'>
         <div class='app-Name' ><p>Scrum Control App</p></div>
@@ -34,12 +36,12 @@
         </a></div>
       </div>
     </nav>";
-    echo "<div class='proyect-list'>
-      <div class='proyect-title'>Proyectos</div>
-      <div class='proyect-table'>
+    echo "<div class='Project-list'>
+      <div class='Project-title'>Proyectos</div>
+      <div class='Project-table'>
         <ul>";
     while ($registre = mysqli_fetch_assoc($resultat)) {
-      echo "<li><a href='#' name='proyecto'>".$registre['Nombre_Proyecto']." (".$registre['Descripcion'].")</a></li>";
+      echo "<li><a href='#' name='Proyecto'>".$registre['Nombre_Proyecto']." (".$registre['Descripcion'].")</a></li>";
     }
       echo "</ul>";
     echo "</div>";
