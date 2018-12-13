@@ -9,22 +9,13 @@
 
   <body>
     <?php
+
+    //Aixo es provisional, ara mateix entris amb qui entris, et sortiran tots els projectes
     $sql = "SELECT Nombre_Proyecto, Descripcion FROM Proyectos;";
     mysqli_select_db($db,'ScrumControlBD');
     $resultat = mysqli_query($db,$sql);
 
-    /*
-    function userData($user, $registre) {
-      $consulta_datos = "SELECT Usuarios.Permisos FROM Usuarios WHERE Usuarios.Nom = '$user';";
-      echo $consulta_datos;
-      while ($registre = mysqli_fetch_assoc($resultado)) {
-        echo $resultado;
-        "<script> var permisosUsuario = ".$resultado."</script>";
-        "<div class='".$resultado."'></div>";
-      }
-    }
-    userData($login_session, $registre);
-    */
+    
     echo "<nav>
       <div class='nav-user'>
         <div class='app-Name' ><p>Scrum Control App</p></div>
@@ -36,14 +27,34 @@
     </nav>";
     echo "<div class='proyect-list'>
       <div class='proyect-title'>Proyectos</div>
-      <div class='proyect-table'>
-        <ul>";
-    while ($registre = mysqli_fetch_assoc($resultat)) {
-      echo "<li><a href='#' name='proyecto'>".$registre['Nombre_Proyecto']." (".$registre['Descripcion'].")</a></li>";
-    }
-      echo "</ul>";
-    echo "</div>";
+        <div class='proyect-table'>
+           <ul>";
+            while ($registre = mysqli_fetch_assoc($resultat)) {
+              echo "<li><a href='#' name='proyecto'>".$registre['Nombre_Proyecto']." (".$registre['Descripcion'].")</a></li>";
+            }
+           echo "</ul>";
+     echo "</div>";
     echo "</div>";
     ?>
+    
+    <div class="row">
+      <div class="col card hoverable push-s1 s10 push-m2 m8 push-l4 l4 new-proyect-box"></div>
+    </div>
+  
+
   </body>
 </html>
+
+
+
+<!--CONSULTA PROJECTES DEVELOPERS:
+
+  select Nom from Usuarios, Grupos, Proyectos where Usuarios.ID_Grupo = Grupos.ID and Grupos.ID_Proyecto = Proyectos.ID and Grupos.ID = 1;
+
+CONSULTA PROJECTES SCRUM MASTER:
+
+  select Nom from Usuarios, Grupos, Proyectos where Usuarios.ID_Grupo = Grupos.ID and Grupos.ID_Proyecto = Proyectos.ID and Grupos.ID = 1;
+
+CONSULTA PROJECTES PRODUCT OWNER:
+
+  select Nombre_Proyecto from Proyectos where ID_Product_Owner = (select ID from Usuarios where Permisos = 1);
