@@ -9,12 +9,22 @@
 
   <body>
     <?php
-    //proyectos:
-    //hola
     $sql = "SELECT Nombre_Proyecto, Descripcion FROM Proyectos;";
     mysqli_select_db($db,'ScrumControlBD');
     $resultat = mysqli_query($db,$sql);
 
+    /*
+    function userData($user, $registre) {
+      $consulta_datos = "SELECT Usuarios.Permisos FROM Usuarios WHERE Usuarios.Nom = '$user';";
+      echo $consulta_datos;
+      while ($registre = mysqli_fetch_assoc($resultado)) {
+        echo $resultado;
+        "<script> var permisosUsuario = ".$resultado."</script>";
+        "<div class='".$resultado."'></div>";
+      }
+    }
+    userData($login_session, $registre);
+    */
     echo "<nav>
       <div class='nav-user'>
         <div class='app-Name' ><p>Scrum Control App</p></div>
