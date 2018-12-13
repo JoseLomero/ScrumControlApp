@@ -38,6 +38,7 @@ Los usuarios se dividen en tres grupos según sus permisos sobre las funciones q
 |---|---|
 | Jose | 1234 |
 | Nil | 1234 |
+| Pop | 1234 |
 
 ### Product Owner <a name="po"></a>
 
