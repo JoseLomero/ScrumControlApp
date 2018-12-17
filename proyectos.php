@@ -21,6 +21,7 @@
     mysqli_select_db($db,'ScrumControlBD');
     $resultat = mysqli_query($db,$sql);
 
+
     
     function userData($user, $registre) {
       $consulta_datos = "SELECT Usuarios.Permisos, Usuarios.ID_Grupo FROM Usuarios WHERE Usuarios.Nom = '$user';";
@@ -30,10 +31,21 @@
         $permisos = $registre['Permisos'];
         $grupo = $registre['ID_Grupo'];
         echo "<script>var tipoUsuario = ".$permisos."</script>";
-        //echo "<div id='usuario-user' class='".$permisos." ".$grupo."'></div>";
       }
     }
+        echo "<script>";
+        function getSM($registre) {
+        $consulta_datos = "SELECT Nom FROM Usuarios WHERE Permisos = 0;";
+        $resultado = mysqli_query($registre, $consulta_datos);
+        global $SM;
+        while ($registre = mysqli_fetch_assoc($resultado)) {
+          $SM = $registre['Nom'];
+          echo "SM.push('".$SM."');";
+        }
+      }
+      echo"</script>";
     userData($login_session, $db);
+    getSM($db);
     
     echo "<nav>
       <div class='nav-user'>
