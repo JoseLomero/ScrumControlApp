@@ -1,5 +1,6 @@
 newProject(tipoUsuario);
 
+
 /**
  * 
  * @param {number} user Esto dice el permiso que tiene el usuario logeado 

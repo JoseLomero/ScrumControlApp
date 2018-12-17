@@ -3,20 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title>Proyectos</title>
+    <!-- Materialize -->
     <meta name = "viewport" content = "width = device-width, initial-scale = 1">      
     <link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
     <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
+
+    <!-- Own stuff -->
+
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/script.js" defer></script>
+    <script type="text/javascript" src="js/error.js" defer></script>
   </head>
 
   <body>
     <?php
 
-    //Aixo es provisional, ara mateix entris amb qui entris, et sortiran tots els projectes
     $sql = "SELECT Nombre_Proyecto, Descripcion FROM Proyectos;";
     mysqli_select_db($db,'ScrumControlBD');
     $resultat = mysqli_query($db,$sql);
@@ -30,18 +34,31 @@
         $permisos = $registre['Permisos'];
         $grupo = $registre['ID_Grupo'];
         echo "<script>var tipoUsuario = ".$permisos."</script>";
-        //echo "<div id='usuario-user' class='".$permisos." ".$grupo."'></div>";
       }
     }
+
+    function retrieveScrumMaster($registre) {
+      $consulta_datos = "SELECT Usuarios.Nom FROM Usuarios WHERE Usuarios.Permisos = 2;";
+      $resultado = mysqli_query($registre, $consulta_datos);
+      global $nombres;
+      while ($registre = mysqli_fetch_assoc($resultado)) {
+        $nombres = $registre['Nom'];
+        echo "<script>var nombresSM = '".$nombres."'</script>";
+      }
+    }
+
     userData($login_session, $db);
+    retrieveScrumMaster($db);
     
     echo "<nav>
       <div class='nav-user'>
         <div class='app-Name' ><p>Scrum Control App</p></div>
-        <div class='usuario-user'><p>Bienvenido, ".$login_session."</p>
-        <a href='logout.php'>
-          <button><img class='logout' src='img/logout.png'></button>
-        </a></div>
+        <div class='usuario-user'>
+          <p>Bienvenido, ".$login_session."</p>
+          <a href='logout.php' class ='btn-small'>
+            <i class='material-icons left'>exit_to_app</i>Exit
+          </a>
+        </div>
       </div>
     </nav>";
     echo "<div class='Project-list'>
