@@ -28,6 +28,11 @@ function showForm() {
 	var div = addElement(form,"div", undefined, undefined);
 	var descr = addElement(div,"span","Descripción: ",undefined);
 	var inputDescr = addElement(descr,"input",undefined,undefined);
+	var div = addElement(form,"div", undefined, undefined);
+	var sm = addElement(div,"span","Elige ScrumMaster: ",undefined);
+	var comboSM = addElement(sm,"select",undefined,undefined);
+	addElement(comboSM,"option",undefined,["selected=selected","disabled=true","value="]).text = "Selecciona una opción";
+	createDropDown(select,name);
 	
 
 
@@ -56,6 +61,8 @@ function addElement(parent, child, text,attributes){
 function br(parent){
 	var br = addElement(parent,"br",undefined,undefined);
 }
+
+
 
 /*
 
