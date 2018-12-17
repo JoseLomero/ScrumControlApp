@@ -13,12 +13,18 @@ function newProject(user){
 
 /*     ------------------------------------------   */
 
+/**
+ * 
+ * Función que crea un formulario para crear nuevos proyectos
+ * 
+ */
 function showForm() {
 	document.querySelector("[name='addProject']").disabled = true;
 	document.querySelector(".new-Project-box").style.display = "block";
 	var parent = document.querySelector(".new-Project-box");
 	var form = addElement(parent,"form", undefined, ["action=insert.php","method=post","id=createProject"]);
 	var div = addElement(form,"div",undefined,undefined);
+	console.log(div);
 	addElement(div,"span","AÑADIR PROYECTO", ["class=card-title"]);
 	var divrow = addElement(div,"div",undefined,undefined);
 
@@ -39,7 +45,13 @@ function showForm() {
 }
 
 
-
+/**
+ * 
+ * @param {HTMLCollection} parent Padre en el cual se creará el elemento
+ * @param {HTMLCollection} child Tipo de elemento que queremos crear
+ * @param {Text} text Texto que se le añadirá al elemento creado
+ * @param {attributes} attributes Atributos que se añadirán a nuestro elemento
+ */
 function addElement(parent, child, text,attributes){
 	var childElement = document.createElement(child);
 	if(text != undefined){
@@ -58,6 +70,10 @@ function addElement(parent, child, text,attributes){
 	return childElement;
 }
 
+/**
+ * 
+ * @param {HTMLCollection} parent se le pasa un elemento y añade un salto de linea
+ */
 function br(parent){
 	var br = addElement(parent,"br",undefined,undefined);
 }

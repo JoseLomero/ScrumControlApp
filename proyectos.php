@@ -9,7 +9,6 @@
     <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
-    <link rel="shortcut icon" href="https://www.logolynx.com/images/logolynx/15/1588b3eef9f1607d259c3f334b85ffd1.png">
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/script.js" defer></script>
   </head>
@@ -77,4 +76,4 @@ CONSULTA PROJECTES SCRUM MASTER:
 
 CONSULTA PROJECTES PRODUCT OWNER:
 
-  select Nombre_Proyecto from Proyectos where ID_Product_Owner = (select ID from Usuarios where Permisos = 1);
+  select Nombre_Proyecto from Proyectos where ID_Product_Owner = (select ID from Usuarios where Permisos = 1); -->
