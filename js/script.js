@@ -13,6 +13,74 @@ function newProject(user){
 
 /*     ------------------------------------------   */
 
+/**
+ * 
+ * Función que crea un formulario para crear nuevos proyectos
+ * 
+ */
+function showForm() {
+	document.querySelector("[name='addProject']").disabled = true;
+	document.querySelector(".new-Project-box").style.display = "block";
+	var parent = document.querySelector(".new-Project-box");
+	var form = addElement(parent,"form", undefined, ["action=insert.php","method=post","id=createProject"]);
+	var div = addElement(form,"div",undefined,undefined);
+	console.log(div);
+	addElement(div,"span","AÑADIR PROYECTO", ["class=card-title"]);
+	var divrow = addElement(div,"div",undefined,undefined);
+
+	addElement(divrow,"span","Nombre del Proyecto: ",undefined);
+	var inputNom = addElement(divrow,"input",undefined,undefined);
+	br(div);
+	var div = addElement(form,"div", undefined, undefined);
+	var descr = addElement(div,"span","Descripción: ",undefined);
+	var inputDescr = addElement(descr,"input",undefined,undefined);
+	
+
+
+}
+
+
+/**
+ * 
+ * @param {HTMLCollection} parent Padre en el cual se creará el elemento
+ * @param {HTMLCollection} child Tipo de elemento que queremos crear
+ * @param {Text} text Texto que se le añadirá al elemento creado
+ * @param {attributes} attributes Atributos que se añadirán a nuestro elemento
+ */
+function addElement(parent, child, text,attributes){
+	var childElement = document.createElement(child);
+	if(text != undefined){
+		var contenido = document.createTextNode(text);
+		childElement.appendChild(contenido);
+	}
+
+	if(attributes != undefined && attributes instanceof Array){
+		for(var i=0;i<attributes.length;i++){
+			var attrName = attributes[i].split("=")[0];
+			var attrValue = attributes[i].split("=")[1];
+			childElement.setAttribute(attrName,attrValue);
+		}
+	}
+	parent.appendChild(childElement);
+	return childElement;
+}
+
+/**
+ * 
+ * @param {HTMLCollection} parent se le pasa un elemento y añade un salto de linea
+ */
+function br(parent){
+	var br = addElement(parent,"br",undefined,undefined);
+}
+
+/*
+
+function initSelect(){
+	$(document).ready(function(){
+    $('select').formSelect();
+  });
+}
+
 function showForm(){
 	document.querySelector("[name='addProject']").disabled = true;
 	document.querySelector(".new-Project-box").style.display = "block";
@@ -27,7 +95,7 @@ function showForm(){
 
 	createSelect(divrow,"Scrum Master del Proyecto: ","scrumMaster");
 	createSelect(divrow,"Product Owner del Proyecto: ","productOwner");
-	createGroup(divrow,"Grupos del Proyecto: ","grupos");
+	//createGroup(divrow,"Grupos del Proyecto: ","grupos");
 
 	addElement(form,"div","Crear",["class=button","onclick=checkNulls()"]);
 }
@@ -44,10 +112,10 @@ function createSelect(parent,labelText,name){
 	addElement(divcol,"br",labelText,undefined);
 	var select = addElement(divcol,"select",undefined,["name="+name]);
 	addElement(select,"option",undefined,["selected=selected","disabled=true","value="]).text = "Selecciona una opción";
-	createDropDown(select,name);
+	//createDropDown(select,name);
 	initSelect();
 }
-
+/*
 function createDropDown(select,tipoUsuario){
 	personas.forEach(function(element){
 		if(element.tipo == tipoUsuario){
@@ -76,3 +144,8 @@ function insertGroup(select){
 		select.add(option);
 	});
 }
+
+*/
+
+
+

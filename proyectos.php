@@ -3,6 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Proyectos</title>
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1">      
+    <link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/script.js" defer></script>
   </head>
@@ -51,7 +57,7 @@
     ?>
     
     <div class="row">
-      <div class="new-proyect-box"></div>
+      <div class="new-Project-box"></div>
     </div>
   
 
