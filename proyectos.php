@@ -51,7 +51,7 @@
     ?>
     
     <div class="row">
-      <div class="col card hoverable push-s1 s10 push-m2 m8 push-l4 l4 new-proyect-box"></div>
+      <div class="new-proyect-box"></div>
     </div>
   
 
@@ -70,4 +70,4 @@ CONSULTA PROJECTES SCRUM MASTER:
 
 CONSULTA PROJECTES PRODUCT OWNER:
 
-  select Nombre_Proyecto from Proyectos where ID_Product_Owner = (select ID from Usuarios where Permisos = 1);
+  select Nombre_Proyecto from Proyectos where ID_Product_Owner = (select ID from Usuarios where Permisos = 1); -->
