@@ -54,11 +54,25 @@
       echo "</script>";
     }
 
-    userData($login_session, $db);
-    retrieveScrumMaster($db);
+    function retrieveProductOwner($registre) {
+      $consulta_datos = "SELECT Usuarios.Nom FROM Usuarios WHERE Usuarios.Permisos = 1;";
+      $resultado = mysqli_query($registre, $consulta_datos);
+      global $nombres;
+      
+      echo "<script>
+      var nombresPO = [];";
+      
+      while ($registre = mysqli_fetch_assoc($resultado)) {
+        $nombres = $registre['Nom'];
+        echo "nombresPO.push('".$nombres."');";
+      }
+
+      echo "</script>";
+    }
 
     userData($login_session, $db);
     retrieveScrumMaster($db);
+    retrieveProductOwner($db);
     
     echo "<nav>
       <div class='nav-user'>

@@ -61,25 +61,46 @@ function showForm() {
 	var parent = document.querySelector(".new-Project-box");
 	var form = addElement(parent,"form", undefined, ["action=insert.php","method=post","id=createProject"]);
 	var div = addElement(form,"div",undefined,undefined);
+
+	// Titulo del formulario
 	addElement(div,"span","AÑADIR PROYECTO", ["class=card-title"]);
 	var divrow = addElement(div,"div",undefined,undefined);
 
+	// Creamos el campo del nombre del proyecto
 	addElement(divrow,"span","Nombre del Proyecto: ",undefined);
 	var inputNom = addElement(divrow,"input",undefined,undefined);
-	br(div);
+
+	// Creamos el campo del formulario -descripcion-
 	var div = addElement(form,"div", undefined, undefined);
 	var descr = addElement(div,"span","Descripción: ",undefined);
 	var inputDescr = addElement(descr,"input",undefined,undefined);
+	
+	// Creamos el campo de los scrum master
 	var div = addElement(form,"div", undefined, undefined);
 	var sm = addElement(div,"span","Elige ScrumMaster: ",undefined);
-	//
 	var comboSM = addElement(sm,"select",undefined,undefined);
 	addElement(comboSM,"option",undefined,["selected=selected","disabled=true","value="]).text = "Selecciona una opción";
-	createDropDown(comboSM,name);
+	dropDownGenerator(comboSM, nombresSM);
+	
+	// Creamos el campo de los Product Owner
 	var div = addElement(form,"div", undefined, undefined);
 	var po = addElement(div,"span","Elige ProductOwner: ",undefined);
 	var comboPO = addElement(po,"input",undefined,["class = select"]);
 	addElement(comboPO,"option",undefined,["selected=selected","disabled=true","value="]).text = "Selecciona una opción";
-	createDropDown(comboPO,name);
+	dropDownGenerator(comboPO, nombresPO);
 
+
+}
+
+
+function dropDownGenerator(combo, arrayCombo) {
+	var opt = null;
+
+	for (i = 0; i < arrayCombo.length; i++) {
+
+		opt = document.createElement('option');
+		opt.value = arrayCombo[i].id;
+		opt.innerHTML = arrayCombo[i].name;
+		combo.appendChild(opt);
+	}
 }
