@@ -104,17 +104,3 @@
 
   </body>
 </html>
-
-
-
-<!--CONSULTA PROJECTES DEVELOPERS:
-
-  select Nom from Usuarios, Grupos, Proyectos where Usuarios.ID_Grupo = Grupos.ID and Grupos.ID_Proyecto = Proyectos.ID and Grupos.ID = 1;
-
-CONSULTA PROJECTES SCRUM MASTER:
-
-  select Nom from Usuarios, Grupos, Proyectos where Usuarios.ID_Grupo = Grupos.ID and Grupos.ID_Proyecto = Proyectos.ID and Grupos.ID = 1;
-
-CONSULTA PROJECTES PRODUCT OWNER:
-
-  select Nombre_Proyecto from Proyectos where ID_Product_Owner = (select ID from Usuarios where Permisos = 1); -->
