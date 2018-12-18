@@ -40,6 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <body>
     <?php
         echo "<h3>LOG IN</h3>";
+        echo "<div class = 'row' style = 'width:100%;'>";
         echo "<form action='' method='post'>";
             echo "User name: <input type='text' name='user' value='' placeholder='username'><br>";
             echo "Password: <input type='password' name='password' value='' placeholder='password'><br>";

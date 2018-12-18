@@ -1,0 +1,9 @@
+Cosas a mejorar
+En este sprint nos hemos distraido bastante con aspectos que no deberíamos habernos enfocado demasiado,
+además de no haber llegado a hacer las especificaciones que se nos pedían. De manera que deberíamos centrarnos
+más en las cosas que se nos piden y concentrarnos en estas.
+También nos ha faltado comunicación, y eso dio pie a un par de problemas al final del sprint.
+
+Qué podemos hacer para mejorarlas?
+Lo primero de todo es hablarlo todo más y centrarnos en nuestras tareas. Cuando nos piden algo tenemos que hacer
+ese algo, y si vemos que no vamos bien pedirnos ayuda entre nosotros para avanzar a un mejor paso.
