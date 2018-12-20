@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 13-12-2018 a las 17:07:31
+-- Tiempo de generación: 20-12-2018 a las 18:58:08
 -- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
 -- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
 
@@ -57,6 +57,26 @@ CREATE TABLE `Grupos` (
 INSERT INTO `Grupos` (`ID`, `Nombre_Grupo`, `ID_Proyecto`) VALUES
 (1, 'JoNi', 1),
 (2, 'JoJo', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Permisos_usuarios`
+--
+
+CREATE TABLE `Permisos_usuarios` (
+  `ID_Permiso` int(2) NOT NULL,
+  `Descripcion_Permiso` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `Permisos_usuarios`
+--
+
+INSERT INTO `Permisos_usuarios` (`ID_Permiso`, `Descripcion_Permiso`) VALUES
+(0, 'Developer'),
+(1, 'Product Owner'),
+(2, 'Scrum Master');
 
 -- --------------------------------------------------------
 
@@ -115,7 +135,7 @@ CREATE TABLE `Usuarios` (
   `ID` int(11) NOT NULL,
   `Nom` varchar(50) NOT NULL,
   `Pasword` varchar(512) NOT NULL,
-  `Permisos` int(11) NOT NULL,
+  `Permisos` int(2) NOT NULL,
   `ID_Grupo` int(11) DEFAULT NULL,
   `Email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -150,6 +170,12 @@ ALTER TABLE `Grupos`
   ADD KEY `FK_Proyecto_ID` (`ID_Proyecto`);
 
 --
+-- Indices de la tabla `Permisos_usuarios`
+--
+ALTER TABLE `Permisos_usuarios`
+  ADD PRIMARY KEY (`ID_Permiso`);
+
+--
 -- Indices de la tabla `Proyectos`
 --
 ALTER TABLE `Proyectos`
@@ -170,7 +196,8 @@ ALTER TABLE `Sprint`
 ALTER TABLE `Usuarios`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `Nom` (`Nom`),
-  ADD KEY `FK_Grupo_ID` (`ID_Grupo`);
+  ADD KEY `FK_Grupo_ID` (`ID_Grupo`),
+  ADD KEY `Permisos` (`Permisos`);
 
 --
 -- Restricciones para tablas volcadas
@@ -200,7 +227,8 @@ ALTER TABLE `Proyectos`
 -- Filtros para la tabla `Usuarios`
 --
 ALTER TABLE `Usuarios`
-  ADD CONSTRAINT `FK_Grupo_ID` FOREIGN KEY (`ID_Grupo`) REFERENCES `Grupos` (`ID`);
+  ADD CONSTRAINT `FK_Grupo_ID` FOREIGN KEY (`ID_Grupo`) REFERENCES `Grupos` (`ID`),
+  ADD CONSTRAINT `Usuarios_ibfk_1` FOREIGN KEY (`Permisos`) REFERENCES `Permisos_usuarios` (`ID_Permiso`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
