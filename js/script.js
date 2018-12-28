@@ -41,7 +41,7 @@ function br(parent) {
 function newProject(user) {
 	if (user == 2) {
 		var parent = document.querySelector(".Project-table");
-		addElement(parent, "button", "Add Project", ["onclick=showForm();", "name=addProject"])
+		addElement(parent, "a", "Add Project", ["onclick=showForm();", "name=addProject", "class=btn showerForm"])
 	}
 }
 
@@ -56,6 +56,7 @@ function newProject(user) {
 
 
 function showForm() {
+	disableButton("showerForm");
 	document.querySelector("[name='addProject']").disabled = true;
 	document.querySelector(".new-Project-box").style.display = "block";
 	var parent = document.querySelector(".new-Project-box");
@@ -79,7 +80,7 @@ function showForm() {
 	var div = addElement(form,"div", undefined, undefined);
 	var sm = addElement(div,"span","Elige ScrumMaster: ",undefined);
 	var comboSM = addElement(sm,"select",undefined,undefined);
-	addElement(comboSM,"option",undefined,["selected=selected","disabled=true","value="]).text = "Selecciona una opción";
+	//addElement(comboSM,"option",undefined,["selected=selected","disabled=true","value="]).text = "Selecciona una opción";
 	dropDownGenerator(comboSM, nombresSM);
 	
 	// Creamos el campo de los Product Owner
@@ -89,7 +90,8 @@ function showForm() {
 	addElement(comboPO,"option",undefined,["selected=selected","disabled=true","value="]).text = "Selecciona una opción";
 	dropDownGenerator(comboPO, nombresPO);
 
-
+	// Creamos el boton que creará el proyecto y destruirá el formulario
+	addElement(parent, "a", "Crear Proyecto", ["onclick=createProject();", "name=createProject", "class=btn destroyForm"])
 }
 
 
@@ -103,4 +105,18 @@ function dropDownGenerator(combo, arrayCombo) {
 		opt.innerHTML = arrayCombo[i].name;
 		combo.appendChild(opt);
 	}
+}
+
+function disableButton(name) {
+	var element = document.getElementsByClassName(name)[0];
+	element.classList.add("disabled");
+}
+
+function enableButton(name) {
+	var element = document.getElementsByClassName(name)[0];
+	element.classList.remove("disabled");
+}
+
+function createProject() {
+	enableButton("showerForm");
 }
