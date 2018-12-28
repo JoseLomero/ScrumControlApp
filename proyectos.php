@@ -70,9 +70,27 @@
       echo "</script>";
     }
 
+    function retrieveDeveloperTeam($registre) {
+      $consulta_datos = "SELECT Grupos.Nombre_Grupo FROM Grupos;";
+      // en la consulta debería ir esto tambien "WHERE Grupos.ID_Proyecto = undefined" o algo asi
+      $resultado = mysqli_query($registre, $consulta_datos);
+      global $nombres;
+      
+      echo "<script>
+      var nombresGD = [];";
+      
+      while ($registre = mysqli_fetch_assoc($resultado)) {
+        $nombres = $registre['Nombre_Grupo'];
+        echo "nombresGD.push('".$nombres."');";
+      }
+
+      echo "</script>";
+    }
+
     userData($login_session, $db);
     retrieveScrumMaster($db);
     retrieveProductOwner($db);
+    retrieveDeveloperTeam($db);
     
     echo "<nav>
       <div class='nav-user'>
