@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/script.js" defer></script>
-    <script type="text/javascript" src="js/error.js" defer></script>
+    <!-- <script type="text/javascript" src="js/error.js" defer></script> -->
   </head>
 
   <body>

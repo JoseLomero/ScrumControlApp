@@ -46,15 +46,11 @@ function newProject(user) {
 }
 
 
-/*     ------------------------------------------   */
-
 /**
  * 
  * Función que crea un formulario para crear nuevos proyectos
  * 
  */
-
-
 function showForm() {
 	disableButton("showerForm");
 	document.querySelector("[name='addProject']").disabled = true;
@@ -77,18 +73,7 @@ function showForm() {
 	var inputDescr = addElement(descr,"input",undefined,undefined);
 	
 	// Creamos el campo de los scrum master
-	var div = addElement(form,"div", undefined, undefined);
-	var sm = addElement(div,"span","Elige ScrumMaster: ",undefined);
-	var comboSM = addElement(sm,"select",undefined,undefined);
-	//addElement(comboSM,"option",undefined,["selected=selected","disabled=true","value="]).text = "Selecciona una opción";
-	dropDownGenerator(comboSM, nombresSM);
-	
-	// Creamos el campo de los Product Owner
-	var div = addElement(form,"div", undefined, undefined);
-	var po = addElement(div,"span","Elige ProductOwner: ",undefined);
-	var comboPO = addElement(po,"input",undefined,["class = select"]);
-	addElement(comboPO,"option",undefined,["selected=selected","disabled=true","value="]).text = "Selecciona una opción";
-	dropDownGenerator(comboPO, nombresPO);
+	crearComboBox("Elige ScrumMaster: ", nombresSM);
 
 	// Creamos el boton que creará el proyecto y destruirá el formulario
 	addElement(parent, "a", "Crear Proyecto", ["onclick=createProject();", "name=createProject", "class=btn destroyForm"])
@@ -107,16 +92,42 @@ function dropDownGenerator(combo, arrayCombo) {
 	}
 }
 
+/**
+ * 
+ * @param {class} name Le pasamos la clase del boton para localizarlo y lo desactiva
+ */
 function disableButton(name) {
 	var element = document.getElementsByClassName(name)[0];
 	element.classList.add("disabled");
 }
 
+/**
+ * 
+ * @param {class} name Le pasamos la clase del boton para localizarlo y lo activa
+ */
 function enableButton(name) {
 	var element = document.getElementsByClassName(name)[0];
 	element.classList.remove("disabled");
 }
 
+
+/*
+ * Funcion que creará el proyecto pasando los parametros indicados al php
+ * Finalmente destruirá el formulario entero y volverá a activar el formulario
+ */
 function createProject() {
 	enableButton("showerForm");
+}
+
+/**
+ * 
+ * @param {text} eleccion Indicador en una string que indicará qué seleccionará
+ * @param {array} nombres Array con los nombres para insertar en el comboBox
+ */
+function crearComboBox(eleccion, nombres) {
+	var div = addElement(form,"div", undefined, undefined);
+	var title = addElement(div,"span", eleccion,undefined);
+	var comboTitle = addElement(title,"select",undefined,undefined);
+	addElement(comboTitle,"option",undefined,["selected=selected","disabled=true","value="]).text = "Selecciona una opción";
+	dropDownGenerator(comboTitle, nombres);
 }
