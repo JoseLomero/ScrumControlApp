@@ -93,14 +93,16 @@
     retrieveDeveloperTeam($db);
     
     echo "<nav>
-      <div class='nav-user'>
-        <div class='app-Name' ><p>Scrum Control App</p></div>
-        <div class='usuario-user'>
-          <p>Bienvenido, ".$login_session."</p>
-          <a href='logout.php' class ='btn-small'>
-            <i class='material-icons left'>exit_to_app</i>Exit
-          </a>
-        </div>
+      <div class='nav-wrapper grey darken-2'>
+        <span class='brand-logo'>Scrum Control App</span>
+        <ul class='right '>
+          <li>Bienvenido, ".$login_session."</li>
+          <li>
+            <a href='logout.php' class='btn'>
+              <i class='material-icons left'>exit_to_app</i> Logout
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>";
     echo "<div class='Project-list'>
