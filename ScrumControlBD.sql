@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 20-12-2018 a las 18:58:08
--- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
--- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 30-12-2018 a las 01:47:52
+-- Versión del servidor: 10.1.35-MariaDB
+-- Versión de PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,16 +19,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `ScrumControlBD`
+-- Base de datos: `scrumcontrolbd`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Especificaciones`
+-- Estructura de tabla para la tabla `especificaciones`
 --
 
-CREATE TABLE `Especificaciones` (
+CREATE TABLE `especificaciones` (
   `ID` int(11) NOT NULL,
   `Num_Tarea` int(11) NOT NULL,
   `Tarea` varchar(50) NOT NULL,
@@ -41,50 +43,30 @@ CREATE TABLE `Especificaciones` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Grupos`
+-- Estructura de tabla para la tabla `grupos`
 --
 
-CREATE TABLE `Grupos` (
+CREATE TABLE `grupos` (
   `ID` int(11) NOT NULL,
   `Nombre_Grupo` varchar(50) NOT NULL,
-  `ID_Proyecto` int(11) NOT NULL
+  `ID_Proyecto` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Grupos`
+-- Volcado de datos para la tabla `grupos`
 --
 
-INSERT INTO `Grupos` (`ID`, `Nombre_Grupo`, `ID_Proyecto`) VALUES
+INSERT INTO `grupos` (`ID`, `Nombre_Grupo`, `ID_Proyecto`) VALUES
 (1, 'JoNi', 1),
 (2, 'JoJo', 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Permisos_usuarios`
+-- Estructura de tabla para la tabla `proyectos`
 --
 
-CREATE TABLE `Permisos_usuarios` (
-  `ID_Permiso` int(2) NOT NULL,
-  `Descripcion_Permiso` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `Permisos_usuarios`
---
-
-INSERT INTO `Permisos_usuarios` (`ID_Permiso`, `Descripcion_Permiso`) VALUES
-(0, 'Developer'),
-(1, 'Product Owner'),
-(2, 'Scrum Master');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `Proyectos`
---
-
-CREATE TABLE `Proyectos` (
+CREATE TABLE `proyectos` (
   `ID` int(11) NOT NULL,
   `Nombre_Proyecto` varchar(50) NOT NULL,
   `Descripcion` varchar(200) NOT NULL,
@@ -94,20 +76,20 @@ CREATE TABLE `Proyectos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Proyectos`
+-- Volcado de datos para la tabla `proyectos`
 --
 
-INSERT INTO `Proyectos` (`ID`, `Nombre_Proyecto`, `Descripcion`, `Numero_Sprint`, `ID_Scrum_Master`, `ID_Product_Owner`) VALUES
+INSERT INTO `proyectos` (`ID`, `Nombre_Proyecto`, `Descripcion`, `Numero_Sprint`, `ID_Scrum_Master`, `ID_Product_Owner`) VALUES
 (1, 'Scrum Administrator', 'Aplicacion para gestionar proyectos en scrum', 1, 3, 4),
 (2, 'Git', 'Pruebas', 1, 1, 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Sprint`
+-- Estructura de tabla para la tabla `sprint`
 --
 
-CREATE TABLE `Sprint` (
+CREATE TABLE `sprint` (
   `ID` int(11) NOT NULL,
   `ID_Proyecto` int(11) NOT NULL,
   `Numero_Sprint` int(11) NOT NULL,
@@ -118,33 +100,33 @@ CREATE TABLE `Sprint` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Sprint`
+-- Volcado de datos para la tabla `sprint`
 --
 
-INSERT INTO `Sprint` (`ID`, `ID_Proyecto`, `Numero_Sprint`, `Fecha_Inicio`, `Fecha_entrega`, `Horas_Maximas`, `Estado`) VALUES
+INSERT INTO `sprint` (`ID`, `ID_Proyecto`, `Numero_Sprint`, `Fecha_Inicio`, `Fecha_entrega`, `Horas_Maximas`, `Estado`) VALUES
 (1, 1, 1, '2018-12-03', '2018-12-11', 20, 'Actual'),
 (2, 1, 2, '2018-12-12', '2018-12-18', 20, 'Proximamante');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Usuarios`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `Usuarios` (
+CREATE TABLE `usuarios` (
   `ID` int(11) NOT NULL,
   `Nom` varchar(50) NOT NULL,
   `Pasword` varchar(512) NOT NULL,
-  `Permisos` int(2) NOT NULL,
+  `Permisos` int(11) NOT NULL,
   `ID_Grupo` int(11) DEFAULT NULL,
   `Email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `Usuarios` (`ID`, `Nom`, `Pasword`, `Permisos`, `ID_Grupo`, `Email`) VALUES
+INSERT INTO `usuarios` (`ID`, `Nom`, `Pasword`, `Permisos`, `ID_Grupo`, `Email`) VALUES
 (1, 'Jose', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 0, 1, 'joselomero0@gmail.com'),
 (2, 'Nil', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 0, 1, 'nil@developer.mail'),
 (3, 'Leandro', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 2, NULL, 'leandro@scrum.master'),
@@ -156,79 +138,72 @@ INSERT INTO `Usuarios` (`ID`, `Nom`, `Pasword`, `Permisos`, `ID_Grupo`, `Email`)
 --
 
 --
--- Indices de la tabla `Especificaciones`
+-- Indices de la tabla `especificaciones`
 --
-ALTER TABLE `Especificaciones`
+ALTER TABLE `especificaciones`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `FK_Dev_ID` (`ID_Dev_Asignado`);
 
 --
--- Indices de la tabla `Grupos`
+-- Indices de la tabla `grupos`
 --
-ALTER TABLE `Grupos`
+ALTER TABLE `grupos`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `FK_Proyecto_ID` (`ID_Proyecto`);
 
 --
--- Indices de la tabla `Permisos_usuarios`
+-- Indices de la tabla `proyectos`
 --
-ALTER TABLE `Permisos_usuarios`
-  ADD PRIMARY KEY (`ID_Permiso`);
-
---
--- Indices de la tabla `Proyectos`
---
-ALTER TABLE `Proyectos`
+ALTER TABLE `proyectos`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `FK_Scrum_Master_ID` (`ID_Scrum_Master`),
   ADD KEY `FK_Product_Owner_ID` (`ID_Product_Owner`),
   ADD KEY `FK_Numero_Sprint_ID` (`Numero_Sprint`);
 
 --
--- Indices de la tabla `Sprint`
+-- Indices de la tabla `sprint`
 --
-ALTER TABLE `Sprint`
+ALTER TABLE `sprint`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indices de la tabla `Usuarios`
+-- Indices de la tabla `usuarios`
 --
-ALTER TABLE `Usuarios`
+ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `Nom` (`Nom`),
-  ADD KEY `FK_Grupo_ID` (`ID_Grupo`),
-  ADD KEY `Permisos` (`Permisos`);
+  ADD KEY `FK_Grupo_ID` (`ID_Grupo`);
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `Especificaciones`
+-- Filtros para la tabla `especificaciones`
 --
-ALTER TABLE `Especificaciones`
-  ADD CONSTRAINT `FK_Dev_ID` FOREIGN KEY (`ID_Dev_Asignado`) REFERENCES `Usuarios` (`ID`);
+ALTER TABLE `especificaciones`
+  ADD CONSTRAINT `FK_Dev_ID` FOREIGN KEY (`ID_Dev_Asignado`) REFERENCES `usuarios` (`ID`);
 
 --
--- Filtros para la tabla `Grupos`
+-- Filtros para la tabla `grupos`
 --
-ALTER TABLE `Grupos`
-  ADD CONSTRAINT `FK_Proyecto_ID` FOREIGN KEY (`ID_Proyecto`) REFERENCES `Proyectos` (`ID`);
+ALTER TABLE `grupos`
+  ADD CONSTRAINT `FK_Proyecto_ID` FOREIGN KEY (`ID_Proyecto`) REFERENCES `proyectos` (`ID`);
 
 --
--- Filtros para la tabla `Proyectos`
+-- Filtros para la tabla `proyectos`
 --
-ALTER TABLE `Proyectos`
-  ADD CONSTRAINT `FK_Numero_Sprint_ID` FOREIGN KEY (`Numero_Sprint`) REFERENCES `Sprint` (`ID`),
-  ADD CONSTRAINT `FK_Product_Owner_ID` FOREIGN KEY (`ID_Product_Owner`) REFERENCES `Usuarios` (`ID`),
-  ADD CONSTRAINT `FK_Scrum_Master_ID` FOREIGN KEY (`ID_Scrum_Master`) REFERENCES `Usuarios` (`ID`);
+ALTER TABLE `proyectos`
+  ADD CONSTRAINT `FK_Numero_Sprint_ID` FOREIGN KEY (`Numero_Sprint`) REFERENCES `sprint` (`ID`),
+  ADD CONSTRAINT `FK_Product_Owner_ID` FOREIGN KEY (`ID_Product_Owner`) REFERENCES `usuarios` (`ID`),
+  ADD CONSTRAINT `FK_Scrum_Master_ID` FOREIGN KEY (`ID_Scrum_Master`) REFERENCES `usuarios` (`ID`);
 
 --
--- Filtros para la tabla `Usuarios`
+-- Filtros para la tabla `usuarios`
 --
-ALTER TABLE `Usuarios`
-  ADD CONSTRAINT `FK_Grupo_ID` FOREIGN KEY (`ID_Grupo`) REFERENCES `Grupos` (`ID`),
-  ADD CONSTRAINT `Usuarios_ibfk_1` FOREIGN KEY (`Permisos`) REFERENCES `Permisos_usuarios` (`ID_Permiso`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `FK_Grupo_ID` FOREIGN KEY (`ID_Grupo`) REFERENCES `grupos` (`ID`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
