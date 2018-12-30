@@ -31,7 +31,11 @@ function showForm() {
 	addElement(parent, "a", "Crear Proyecto", ["onclick=createProject();", "name=createProject", "class=btn destroyForm"])
 }
 
-
+/**
+ * Crea las opciones dentro del select que se le pase. Si la array no tiene id, le asigna uno automaticamente
+ * @param {object} select Select al que se le añadirán las opciones
+ * @param {array} arrayCombo Array con objetos que pasan un nombre e id
+ */
 function dropDownGenerator(select, arrayCombo) {
 	var opt = null;
 	if (arrayCombo[0] == undefined) {
