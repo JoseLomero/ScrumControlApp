@@ -39,7 +39,7 @@
     }
 
     function retrieveScrumMaster($registre) {
-      $consulta_datos = "SELECT Usuarios.Nom FROM Usuarios WHERE Usuarios.Permisos = 2;";
+      $consulta_datos = "SELECT Usuarios.ID, Usuarios.Nom FROM Usuarios WHERE Usuarios.Permisos = 2;";
       $resultado = mysqli_query($registre, $consulta_datos);
       global $nombres;
       
@@ -47,15 +47,17 @@
       var nombresSM = [];";
       
       while ($registre = mysqli_fetch_assoc($resultado)) {
-        $nombres = $registre['Nom'];
-        echo "nombresSM.push('".$nombres."');";
+        echo "nombresSM.push({ ",
+          "id: '",$registre['ID'],"',",
+          "name: '".$registre['Nom']."'",
+        "});";
       }
 
       echo "</script>";
     }
 
     function retrieveProductOwner($registre) {
-      $consulta_datos = "SELECT Usuarios.Nom FROM Usuarios WHERE Usuarios.Permisos = 1;";
+      $consulta_datos = "SELECT Usuarios.ID, Usuarios.Nom FROM Usuarios WHERE Usuarios.Permisos = 1;";
       $resultado = mysqli_query($registre, $consulta_datos);
       global $nombres;
       
@@ -63,16 +65,17 @@
       var nombresPO = [];";
       
       while ($registre = mysqli_fetch_assoc($resultado)) {
-        $nombres = $registre['Nom'];
-        echo "nombresPO.push('".$nombres."');";
+        echo "nombresPO.push({ ",
+          "id: '",$registre['ID'],"',",
+          "name: '".$registre['Nom']."'",
+        "});";
       }
 
       echo "</script>";
     }
 
     function retrieveDeveloperTeam($registre) {
-      $consulta_datos = "SELECT Grupos.Nombre_Grupo FROM Grupos;";
-      // en la consulta debería ir esto tambien "WHERE Grupos.ID_Proyecto = undefined" o algo asi
+      $consulta_datos = "SELECT Grupos.Nombre_Grupo, Grupos.ID_Proyecto FROM Grupos WHERE Grupos.ID_Proyecto is NULL;";
       $resultado = mysqli_query($registre, $consulta_datos);
       global $nombres;
       
@@ -80,8 +83,10 @@
       var nombresGD = [];";
       
       while ($registre = mysqli_fetch_assoc($resultado)) {
-        $nombres = $registre['Nombre_Grupo'];
-        echo "nombresGD.push('".$nombres."');";
+        echo "nombresGD.push({ ",
+          "name: '",$registre['Nombre_Grupo'],"',",
+          "id: '".$registre['ID_Proyecto']."'",
+        "});";
       }
 
       echo "</script>";

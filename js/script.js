@@ -1,7 +1,7 @@
 newProject(tipoUsuario);
 
 /**
- * 
+ * Crea un elemento hijo y se lo añade al padre que se le pasa. Se le puede añadir texto y atributos
  * @param {HTMLCollection} parent Padre en el cual se creará el elemento
  * @param {HTMLCollection} child Tipo de elemento que queremos crear
  * @param {Text} text Texto que se le añadirá al elemento creado
@@ -26,7 +26,7 @@ function addElement(parent, child, text, attributes) {
 }
 
 /**
- * 
+ * Añade un salto de linea
  * @param {HTMLCollection} parent se le pasa un elemento y añade un salto de linea
  */
 function br(parent) {
@@ -35,7 +35,7 @@ function br(parent) {
 
 
 /**
- * 
+ * Permite saber qué tipo de usuario se ha logeado
  * @param {number} user Esto dice el permiso que tiene el usuario logeado 
  */
 function newProject(user) {
@@ -47,9 +47,7 @@ function newProject(user) {
 
 
 /**
- * 
  * Función que crea un formulario para crear nuevos proyectos
- * 
  */
 function showForm() {
 	disableButton("showerForm");
@@ -72,28 +70,38 @@ function showForm() {
 	var descr = addElement(div,"span","Descripción: ",undefined);
 	var inputDescr = addElement(descr,"input",undefined,undefined);
 	
-	// Creamos el campo de los scrum master
-	crearComboBox("Elige ScrumMaster: ", nombresSM);
+	// Creamos los ComboBox
+	crearComboBox(form, "Elige Scrum Master: ", nombresSM);
+	crearComboBox(form, "Elige Product Owner: ", nombresPO);
+	crearComboBox(form, "Elige el Grupo de Developers: ", nombresGD);
 
 	// Creamos el boton que creará el proyecto y destruirá el formulario
 	addElement(parent, "a", "Crear Proyecto", ["onclick=createProject();", "name=createProject", "class=btn destroyForm"])
 }
 
 
-function dropDownGenerator(combo, arrayCombo) {
+function dropDownGenerator(select, arrayCombo) {
 	var opt = null;
+	if (arrayCombo[0] == undefined) {
+		return false;
+	}
 
 	for (i = 0; i < arrayCombo.length; i++) {
-
 		opt = document.createElement('option');
-		opt.value = arrayCombo[i].id;
+		
+		if (arrayCombo[i].id == undefined) {
+			opt.value = i+1;
+		} else {
+			opt.value = arrayCombo[i].id;
+		}
+
 		opt.innerHTML = arrayCombo[i].name;
-		combo.appendChild(opt);
+		select.appendChild(opt);
 	}
 }
 
 /**
- * 
+ * Desactiva un boton
  * @param {class} name Le pasamos la clase del boton para localizarlo y lo desactiva
  */
 function disableButton(name) {
@@ -102,7 +110,7 @@ function disableButton(name) {
 }
 
 /**
- * 
+ * Activa un boton desactivado
  * @param {class} name Le pasamos la clase del boton para localizarlo y lo activa
  */
 function enableButton(name) {
@@ -111,7 +119,7 @@ function enableButton(name) {
 }
 
 
-/*
+/**
  * Funcion que creará el proyecto pasando los parametros indicados al php
  * Finalmente destruirá el formulario entero y volverá a activar el formulario
  */
@@ -120,14 +128,16 @@ function createProject() {
 }
 
 /**
- * 
+ * Añade a un formulario un combobox generado dinamicamente, pasandole de qué es el formulario y las opciones que contendrá
+ * @param {object} form Formulario al que vas a agregar el combobox
  * @param {text} eleccion Indicador en una string que indicará qué seleccionará
- * @param {array} nombres Array con los nombres para insertar en el comboBox
+ * @param {array} nombres Array con los nombres para insertar en el comboBox 
  */
-function crearComboBox(eleccion, nombres) {
+function crearComboBox(form, eleccion, nombres) {
 	var div = addElement(form,"div", undefined, undefined);
-	var title = addElement(div,"span", eleccion,undefined);
-	var comboTitle = addElement(title,"select",undefined,undefined);
-	addElement(comboTitle,"option",undefined,["selected=selected","disabled=true","value="]).text = "Selecciona una opción";
-	dropDownGenerator(comboTitle, nombres);
+	addElement(div,"span", eleccion,undefined);
+	var select = addElement(div,"select",undefined,undefined);
+	addElement(select,"option",undefined,["selected=selected","disabled=true","value="]).text = "Selecciona una opción";
+	dropDownGenerator(select, nombres);
+	$(select).formSelect();
 }
