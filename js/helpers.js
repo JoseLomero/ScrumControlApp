@@ -48,3 +48,12 @@ function addElement(parent, child, text, attributes) {
 	parent.appendChild(childElement);
 	return childElement;
 }
+
+/**
+ * Se pasa un nombre de clase en concreto y busca dicho elemento para eliminarlo
+ * @param {class} className nombre de la clase para borrar el elemento 
+ */
+function elementRemover(className) {
+	element = document.querySelector("."+className);
+	element.remove();
+}

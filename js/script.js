@@ -16,5 +16,7 @@ function newProject(user) {
  * Finalmente destruirá el formulario entero y volverá a activar el formulario
  */
 function createProject() {
+	elementRemover("destroyForm")
+	deleteForm("new-Project-box", "createProject");
 	enableButton("showerForm");
 }

@@ -3,7 +3,6 @@
  */
 function showForm() {
 	disableButton("showerForm");
-	document.querySelector("[name='addProject']").disabled = true;
 	document.querySelector(".new-Project-box").style.display = "block";
 	var parent = document.querySelector(".new-Project-box");
 	var form = addElement(parent,"form", undefined, ["action=insert.php","method=post","id=createProject"]);
