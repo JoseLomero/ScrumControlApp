@@ -69,3 +69,23 @@ function crearComboBox(form, eleccion, nombres) {
 	dropDownGenerator(select, nombres);
 	$(select).formSelect();
 }
+
+function createForm() {
+	var pass = checkGroup(nombresSM);
+	if (pass) {
+		pass = checkGroup(nombresPO);
+		if (pass) {
+			pass = checkGroup(nombresGD);
+			if (pass) {
+				// Creamos el formulario
+				showForm();
+			} else {
+				createErrorWindow("No hay Developers disponibles!");
+			}
+		} else {
+			createErrorWindow("No hay Product Owner disponible!");
+		}
+	} else {
+		createErrorWindow("No hay Scrum Master disponible!");
+	}
+}

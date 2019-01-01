@@ -12,13 +12,16 @@
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
 
     <!-- Own stuff -->
-
+    <!-- JS archives -->
+    <script type="text/javascript" src="js/formGenerator.js"></script>
+    <script type="text/javascript" src="js/helpers.js"></script>
+    <script type="text/javascript" src="js/formRemover.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/errors.js"></script>
+    <script type="text/javascript" src="js/_init.js" defer></script>
+    
+    <!-- CSS archives -->
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="js/formGenerator.js" defer></script>
-    <script type="text/javascript" src="js/helpers.js" defer></script>
-    <script type="text/javascript" src="js/formRemover.js" defer></script>
-    <script type="text/javascript" src="js/script.js" defer></script>
-    <!-- <script type="text/javascript" src="js/error.js" defer></script> -->
   </head>
 
   <body>
@@ -128,7 +131,10 @@
     <div class="row">
       <div class="new-Project-box"></div>
     </div>
-  
+
+    <div class="window-message">
+		  <div id="errores"></div>
+    </div>
 
   </body>
 </html>
