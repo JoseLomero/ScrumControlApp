@@ -32,7 +32,7 @@ function showForm() {
 
 /**
  * Crea las opciones dentro del select que se le pase. Si la array no tiene id, le asigna uno automaticamente
- * @param {object} select Select al que se le añadirán las opciones
+ * @param {object} select Select al que se le añadirán las opciones 	
  * @param {array} arrayCombo Array con objetos que pasan un nombre e id
  */
 function dropDownGenerator(select, arrayCombo) {
@@ -71,21 +71,14 @@ function crearComboBox(form, eleccion, nombres) {
 }
 
 function createForm() {
-	var pass = checkGroup(nombresSM);
-	if (pass) {
-		pass = checkGroup(nombresPO);
-		if (pass) {
-			pass = checkGroup(nombresGD);
-			if (pass) {
-				// Creamos el formulario
-				showForm();
-			} else {
-				createErrorWindow("No hay Developers disponibles!");
-			}
-		} else {
-			createErrorWindow("No hay Product Owner disponible!");
-		}
-	} else {
+	if (!checkGroup(nombresSM)) {
 		createErrorWindow("No hay Scrum Master disponible!");
+	} else if (!checkGroup(nombresPO)) {
+		createErrorWindow("No hay Product Owner disponible!");	
+	} else if (checkGroup(nombresGD)) {
+		createErrorWindow("No hay Developers disponibles!");
+	} else {
+		// Creamos el formulario
+		showForm();
 	}
 }
