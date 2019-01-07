@@ -137,6 +137,8 @@ INSERT INTO `usuarios` (`ID`, `Nom`, `Pasword`, `Permisos`, `ID_Grupo`, `Email`)
 -- Índices para tablas volcadas
 --
 
+
+
 --
 -- Indices de la tabla `especificaciones`
 --
@@ -159,6 +161,10 @@ ALTER TABLE `proyectos`
   ADD KEY `FK_Scrum_Master_ID` (`ID_Scrum_Master`),
   ADD KEY `FK_Product_Owner_ID` (`ID_Product_Owner`),
   ADD KEY `FK_Numero_Sprint_ID` (`Numero_Sprint`);
+
+ALTER TABLE `proyectos`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
 
 --
 -- Indices de la tabla `sprint`
@@ -208,3 +214,7 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+ALTER TABLE scrumcontrolbd.proyectos DROP FOREIGN KEY FK_Numero_Sprint_ID;
+ALTER TABLE `sprint` ADD INDEX(`ID_Proyecto`);

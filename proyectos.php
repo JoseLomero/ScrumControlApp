@@ -3,7 +3,7 @@ include 'template/header.php';
 echo '<script type="text/javascript" src="js/paginas/proyectos.js"></script>';
 print_r($_POST);
 if ($_POST) {
-  die();
+  createProject($db, $_POST);
 }
 
 $sql = "SELECT Nombre_Proyecto, Descripcion FROM Proyectos;";
@@ -41,9 +41,9 @@ function retrieveScrumMaster($registre) {
   echo "</script>";
 }
 
-function retrieveProductOwner($registre) {
+function retrieveProductOwner($conexion) {
   $consulta_datos = "SELECT Usuarios.ID, Usuarios.Nom FROM Usuarios WHERE Usuarios.Permisos = 1;";
-  $resultado = mysqli_query($registre, $consulta_datos);
+  $resultado = mysqli_query($conexion, $consulta_datos);
   global $nombres;
 
   echo "<script>
@@ -59,9 +59,25 @@ function retrieveProductOwner($registre) {
   echo "</script>";
 }
 
-function retrieveDeveloperTeam($registre) {
+function createProject($conexion, $data) {
+  // Insertar proyecto
+  $insertar_datos = "INSERT INTO proyectos (Nombre_Proyecto, Descripcion, Numero_Sprint, ID_Scrum_Master, ID_Product_Owner) VALUES (
+    '" .mysqli_real_escape_string($conexion, $data['nom']) . "',
+    '" .mysqli_real_escape_string($conexion, $data['descr']) . "',
+    '" .mysqli_real_escape_string($conexion, $data['scrumMaster']) . "',
+    '" .mysqli_real_escape_string($conexion, $data['productOwner']) . "',
+    '" .mysqli_real_escape_string($conexion, $data['developers']) . "'
+    );";
+  $resultado = mysqli_query($conexion, $insertar_datos);
+
+print_r($insertar_datos .  $resultado);
+  // Atualizar grupo
+
+}
+
+function retrieveDeveloperTeam($conexion) {
   $consulta_datos = "SELECT Grupos.Nombre_Grupo, Grupos.ID FROM Grupos WHERE Grupos.ID_Proyecto is NULL;";
-  $resultado = mysqli_query($registre, $consulta_datos);
+  $resultado = mysqli_query($conexion, $consulta_datos);
   global $nombres;
 
   echo "<script>
