@@ -3,8 +3,10 @@
   margin-left: 1em;
 }
 
+.window-message {
+  display: none;
+}
 #errores {
-  visibility: hidden;
   border: solid;
   float: left;
   border-radius: 25%;

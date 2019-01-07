@@ -6,7 +6,7 @@ function createErrorWindow(texto) {
 	
 	var parent = document.querySelector("#errores");
 	var div = addElement(parent,"div",undefined,["class=image-error"]);
-	addElement(div,"img",undefined,["src=img/exclamation.png class=basicError-icon"]);
+	addElement(div,"img",undefined,["src=img/exclamation.png", "class=basicError-icon"]);
 	addElement(div,"span",texto,["class=error-message"]);
 
     document.querySelector(".window-message").style.display = "block";
